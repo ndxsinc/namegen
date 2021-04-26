@@ -2,8 +2,11 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\NameLists\Flavors;
+use App\NameLists\NationalParks;
+use Illuminate\Console\Command;
+
+
 
 class Namegen extends Command
 {
@@ -12,7 +15,7 @@ class Namegen extends Command
      *
      * @var string
      */
-    protected $signature = 'namegen';
+    protected $signature = 'namegen {namelist?}';
 
     /**
      * The console command description.
@@ -38,10 +41,25 @@ class Namegen extends Command
      */
     public function handle()
     {
-        $name = Flavors::generate();
+        $nameset = $this->argument('namelist') ?? 'flavors';
+
+        $name = self::{$nameset}();
 
         $this->line($name);
 
         return 0;
+    }
+
+    private static function flavors(){
+        $name = Flavors::generate();
+
+        return $name;
+    }
+
+    private static function parks() {
+
+        $name = NationalParks::generate();
+
+        return $name;
     }
 }
