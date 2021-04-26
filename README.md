@@ -10,13 +10,10 @@ Using the artisan console:
 
     php artisan namegen {nameset}
 
-As a shell script:
-    
-    ln -s /usr/local/bin/namegen ~/namegen/install/folder/storage/bin/namegen.sh
+There are currenntly 2 nameset values;
+* flavors - uses a list of flavors
+* parks - uses a list of national parks
 
-    namegen {nameset}
-
-
-Notes: I am planning the api but need something quick for now so it is cli only.
+Note: I am planning the api but need something quick for now, so it is cli only until I have more time.
 
 Created by Jason Stubblefield for NDXS Inc. in the United States. 
